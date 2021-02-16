@@ -140,7 +140,7 @@ public class SocketServer6 {
 
             sendByteBuffer.put(scmVirtualAccountResultDto.getFiller130().getBytes("UTF-8"));
             sendByteBuffer.put(new byte[130 - scmVirtualAccountResultDto.getFiller130().getBytes("UTF-8").length]);
-            
+
             OutputStream os = socket.getOutputStream();
             os.write(sendByteBuffer.array());
             os.flush();
