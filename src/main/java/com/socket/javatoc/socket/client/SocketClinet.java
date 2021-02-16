@@ -1,4 +1,4 @@
-package com.socket.javatoc.socket;
+package com.socket.javatoc.socket.client;
 
 import java.io.*;
 import java.net.Socket;
