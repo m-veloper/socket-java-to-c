@@ -6,14 +6,14 @@ import java.net.Socket;
 
 public class SocketServer4 {
     public static void main(String[] args) {
-        try (ServerSocket ss = new ServerSocket(6547)) {
+        try (ServerSocket ss = new ServerSocket(18501)) {
             msg();
             while (true) {
                 try(
                     Socket socket = ss.accept();
                     DataInputStream bin = new DataInputStream(socket.getInputStream());
                     BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
-                    BufferedOutputStream bout = new BufferedOutputStream(new FileOutputStream(new File("c:/Users/hsnym/Desktop/TEST1/" + System.currentTimeMillis() + ".txt")));
+                    BufferedOutputStream bout = new BufferedOutputStream(new FileOutputStream(new File("c:/Users/hsnym/Desktop/wc/" + System.currentTimeMillis() + ".txt")));
                     ) {
                     System.out.printf("클라이언트 접속 : %s%n", socket.getInetAddress());
                     long size = bin.readLong();        // 전송받을 데이터의 총 크기

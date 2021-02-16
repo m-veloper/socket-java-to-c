@@ -1,6 +1,5 @@
 package com.socket.javatoc.socketTest.makeDoc;
 
-import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 
 import java.io.*;
@@ -10,7 +9,6 @@ import java.nio.file.Path;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-@Slf4j
 public class FileToByte {
 
     @Test
