@@ -11,13 +11,11 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
-import java.nio.file.Files;
-import java.nio.file.Path;
 
-public class SocketServer6 {
+public class VirtualAccount {
 
     public static void main(String[] args) throws IOException {
-        SocketServer6 socketServer5 = new SocketServer6();
+        VirtualAccount socketServer5 = new VirtualAccount();
         socketServer5.run();
     }
 
@@ -29,7 +27,7 @@ public class SocketServer6 {
             ServerSocket server = new ServerSocket(port);
 
             while (true) {
-                System.out.println("-------접속 대기중------");
+                System.out.println("-------가상계좌 요청 접속 대기중------");
                 Socket socket = server.accept();         // 계속 기다리고 있다가 클라이언트가 접속하면 통신할 수 있는 소켓 반환
                 System.out.println(socket.getInetAddress() + "로 부터 연결요청이 들어옴");
                 InputStream is = socket.getInputStream();
@@ -55,13 +53,6 @@ public class SocketServer6 {
             e.printStackTrace();
         }
 
-    }
-
-    public  int byteArrayToInt(byte bytes[]) {
-        return ((((int)bytes[0] & 0xff) << 24) |
-                (((int)bytes[1] & 0xff) << 16) |
-                (((int)bytes[2] & 0xff) << 8) |
-                (((int)bytes[3] & 0xff)));
     }
 
     public void sendData(byte[] bytes, Socket socket) {

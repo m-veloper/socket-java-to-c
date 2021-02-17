@@ -4,7 +4,7 @@ import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class SocketServer4 {
+public class Batch {
     public static void main(String[] args) {
         try (ServerSocket ss = new ServerSocket(18501)) {
             msg();
