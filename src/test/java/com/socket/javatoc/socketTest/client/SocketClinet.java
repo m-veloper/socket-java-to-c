@@ -2,14 +2,15 @@ package com.socket.javatoc.socketTest.client;
 
 import java.io.*;
 import java.net.Socket;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class SocketClinet {
     public static void main(String[] args) {
-
-//        String path = "C:/Users/hsnym/Desktop/wc/send/SFLCN0101/SFLCN0101_20210215.dat";
-//        String path = "C:/Users/hsnym/Desktop/wc/test/SFLCN0103/SFLCN0103_20210215.dat";
-        String path = "C:/Users/hsnym/Desktop/wc/test1/SFLCN0103/SFLCN0103_20210215.dat";
-//        String path = "C:/Users/hsnym/Desktop/wc/test2/SFLCN0103/SFLCN0103_20210215.dat";
+        ;
+        String path = "C:/Users/hsnym/Desktop/wc/test/SFLCN0103/SFLCN0103.dat";
+        LocalDate localDate = LocalDate.now();
+        String now = localDate.format(DateTimeFormatter.ofPattern("yyyyMMdd"));
 
         File file = new File(path);
         try (
@@ -24,7 +25,7 @@ public class SocketClinet {
             dout.writeLong(fileSize);
 
             // 전솔항 파일명 (SFLCN0101_20210125.dat (SFLCN0101_ + "YYYYMMDD" + ".dat"))
-            dout.writeUTF("SFLCN0103_20210215.dat");
+            dout.writeUTF("SFLCN0103_"+now+".dat");
 
             byte[] b = new byte[10000];
             int readed = -1;
