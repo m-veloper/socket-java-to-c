@@ -5,10 +5,10 @@ import java.net.Socket;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-public class SocketClinet {
+public class PaymnetClinet {
     public static void main(String[] args) {
-        ;
-        String path = "C:/Users/hsnym/Desktop/wc/test/SFLCN0103/SFLCN0103.dat";
+
+        String path = "C:/Users/hsnym/Desktop/wc/test/SFLCN0205/SFLCN0205.dat";
         LocalDate localDate = LocalDate.now();
         String now = localDate.format(DateTimeFormatter.ofPattern("yyyyMMdd"));
 
@@ -25,7 +25,7 @@ public class SocketClinet {
             dout.writeLong(fileSize);
 
             // 전솔항 파일명 (SFLCN0101_20210125.dat (SFLCN0101_ + "YYYYMMDD" + ".dat"))
-            dout.writeUTF("SFLCN0103_"+now+".dat");
+            dout.writeUTF("SFLCN0205_"+now+".dat");
 
             byte[] b = new byte[10000];
             int readed = -1;
