@@ -8,11 +8,30 @@ import java.time.format.DateTimeFormatter;
 public class PaymnetClinet {
     public static void main(String[] args) {
 
-        String path = "C:/Users/hsnym/Desktop/wc/test/SFLCN0205/SFLCN0205.dat";
         LocalDate localDate = LocalDate.now();
         String now = localDate.format(DateTimeFormatter.ofPattern("yyyyMMdd"));
 
-        File file = new File(path);
+//        String path = "C:/Users/hsnym/Desktop/wc/test/SFLCN0205/SFLCN0205.dat";
+
+        String directoryDt = localDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        String[] date = directoryDt.split("-");
+
+        StringBuffer fileName = new StringBuffer();
+        fileName.append("SFLCN0201_");
+        fileName.append(now);
+        fileName.append(".dat");
+
+        StringBuffer path = new StringBuffer();
+        path.append("C:/home/wooricard/download/sflcn0201/");
+        path.append(date[0]);
+        path.append("/");
+        path.append(date[1]);
+        path.append("/");
+        path.append(date[2]);
+        path.append("/");
+        path.append(fileName);
+
+        File file = new File(String.valueOf(path));
         try (
                 Socket socket = new Socket("127.0.0.1", 6547);
                 DataOutputStream dout =  new DataOutputStream( new BufferedOutputStream(socket.getOutputStream()));

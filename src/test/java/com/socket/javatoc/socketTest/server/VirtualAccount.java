@@ -55,9 +55,11 @@ public class VirtualAccount {
 
     }
 
-    public void sendData(byte[] bytes, Socket socket) {
-        ByteUtils byteUtils = new ByteUtils();
+    public void sendData(byte[] bytes, Socket socket) throws InterruptedException {
 
+//        Thread.sleep(10000);
+
+        ByteUtils byteUtils = new ByteUtils();
         ScmVirtualAccountResultDto scmVirtualAccountResultDto = ScmVirtualAccountResultDto.builder()
 
                 .svcDiv("SCM")
