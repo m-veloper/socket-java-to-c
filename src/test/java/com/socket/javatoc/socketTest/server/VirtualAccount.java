@@ -44,6 +44,92 @@ public class VirtualAccount {
                     if (read < 0) {
                         break;
                     }
+
+                    byte[] tempArr = new byte[4];
+                    System.arraycopy(buff, 0, tempArr, 0, 4);
+                    System.out.println(new String(tempArr).trim());
+
+                    tempArr = new byte[4];
+                    System.arraycopy(buff, 4, tempArr, 0, 4);
+                    System.out.println(new String(tempArr).trim());
+
+                    tempArr = new byte[4];
+                    System.arraycopy(buff, 8, tempArr, 0, 4);
+                    System.out.println(new String(tempArr).trim());
+
+                    tempArr = new byte[200];
+                    System.arraycopy(buff, 12, tempArr, 0, 200);
+                    System.out.println(new String(tempArr).trim());
+
+                    tempArr = new byte[10];
+                    System.arraycopy(buff, 212, tempArr, 0, 10);
+                    System.out.println(new String(tempArr).trim());
+
+                    tempArr = new byte[14];
+                    System.arraycopy(buff, 222, tempArr, 0, 14);
+                    System.out.println(new String(tempArr).trim());
+
+                    tempArr = new byte[64];
+                    System.arraycopy(buff, 236, tempArr, 0, 64);
+                    System.out.println(new String(tempArr).trim());
+
+                    // Body 변환
+                    tempArr = new byte[13];
+                    System.arraycopy(buff, 300, tempArr, 0, 13);
+                    System.out.println(new String(tempArr).trim());
+                    tempArr = new byte[1];
+                    System.arraycopy(buff, 313, tempArr, 0, 1);
+                    System.out.println(new String(tempArr).trim());
+                    tempArr = new byte[1];
+                    System.arraycopy(buff, 314, tempArr, 0, 1);
+                    System.out.println(new String(tempArr).trim());
+                    tempArr = new byte[10];
+                    System.arraycopy(buff, 315, tempArr, 0, 10);
+                    System.out.println(new String(tempArr).trim());
+                    tempArr = new byte[13];
+                    System.arraycopy(buff, 325, tempArr, 0, 13);
+                    System.out.println(new String(tempArr).trim());
+                    tempArr = new byte[100];
+                    System.arraycopy(buff, 338, tempArr, 0, 100);
+                    System.out.println(new String(tempArr).trim());
+                    tempArr = new byte[13];
+                    System.arraycopy(buff, 438, tempArr, 0, 13);
+                    System.out.println(new String(tempArr).trim());
+                    tempArr = new byte[50];
+                    System.arraycopy(buff, 451, tempArr, 0, 50);
+                    System.out.println(new String(tempArr).trim());
+                    tempArr = new byte[50];
+                    System.arraycopy(buff, 501, tempArr, 0, 50);
+                    System.out.println(new String(tempArr).trim());
+                    tempArr = new byte[2];
+                    System.arraycopy(buff, 551, tempArr, 0, 2);
+                    System.out.println(new String(tempArr).trim());
+                    tempArr = new byte[4];
+                    System.arraycopy(buff, 553, tempArr, 0, 4);
+                    System.out.println(new String(tempArr).trim());
+                    tempArr = new byte[4];
+                    System.arraycopy(buff, 557, tempArr, 0, 4);
+                    System.out.println(new String(tempArr).trim());
+                    tempArr = new byte[4];
+                    System.arraycopy(buff, 561, tempArr, 0, 4);
+                    System.out.println(new String(tempArr).trim());
+                    tempArr = new byte[50];
+                    System.arraycopy(buff, 565, tempArr, 0, 50);
+                    System.out.println(new String(tempArr).trim());
+                    tempArr = new byte[3];
+                    System.arraycopy(buff, 615, tempArr, 0, 3);
+                    System.out.println(new String(tempArr).trim());
+                    tempArr = new byte[40];
+                    System.arraycopy(buff, 618, tempArr, 0, 40);
+                    System.out.println(new String(tempArr).trim());
+                    tempArr = new byte[100];
+                    System.arraycopy(buff, 658, tempArr, 0, 100);
+                    System.out.println(new String(tempArr).trim());
+                    tempArr = new byte[142];
+                    System.arraycopy(buff, 758, tempArr, 0, 142);
+                    System.out.println(new String(tempArr).trim());
+
+
                     sendData(buff, socket);
                 }
 
