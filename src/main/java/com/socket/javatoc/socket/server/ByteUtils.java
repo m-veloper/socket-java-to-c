@@ -1,4 +1,4 @@
-package com.socket.javatoc.common;
+package com.socket.javatoc.socket.server;
 
 import org.springframework.stereotype.Service;
 

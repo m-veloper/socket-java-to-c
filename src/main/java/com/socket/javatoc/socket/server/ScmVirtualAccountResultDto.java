@@ -1,4 +1,4 @@
-package com.socket.javatoc.model;
+package com.socket.javatoc.socket.server;
 
 import lombok.Builder;
 import lombok.Getter;

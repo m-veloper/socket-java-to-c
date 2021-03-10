@@ -1,7 +1,7 @@
 package com.socket.javatoc.socketTest.server;
 
-import com.socket.javatoc.common.ByteUtils;
-import com.socket.javatoc.model.ScmVirtualAccountResultDto;
+import com.socket.javatoc.socket.server.ByteUtils;
+import com.socket.javatoc.socket.server.ScmVirtualAccountResultDto;
 
 import java.io.BufferedInputStream;
 import java.io.IOException;
@@ -11,6 +11,8 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class VirtualAccount {
 
@@ -143,7 +145,11 @@ public class VirtualAccount {
 
     public void sendData(byte[] bytes, Socket socket) throws InterruptedException {
 
-//        Thread.sleep(10000);
+
+        //todo 번호 생성하여 보내도록 13자리
+        int authNo = (int)(Math.random() * (9999999 - 1000000 + 1)) + 1000000;
+        String saleMembCustNo = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyMMdd")) + authNo;
+
 
         ByteUtils byteUtils = new ByteUtils();
         ScmVirtualAccountResultDto scmVirtualAccountResultDto = ScmVirtualAccountResultDto.builder()
@@ -158,7 +164,7 @@ public class VirtualAccount {
                 .normProcYn("Y")
                 .procRsltCntn("정상처리")
                 .mrktCustNo("WCWP")
-                .saleMembCustNo("200203111111")
+                .saleMembCustNo(saleMembCustNo)
                 .iacntBankCd("020")
                 .iacntNo("62000004118233")
                 .iacntOwnnm("김대표(주)우리카드")
@@ -174,7 +180,7 @@ public class VirtualAccount {
 //                .normProcYn("N")
 //                .procRsltCntn("실패처리")
 //                .mrktCustNo("999912319003")
-//                .saleMembCustNo("200203111111")
+//                .saleMembCustNo(saleMembCustNo)
 //                .iacntBankCd("020")
 //                .iacntNo("62000004118233")
 //                .iacntOwnnm("김대표(주)우리카드")
