@@ -44,7 +44,7 @@ public class SocketServer {
                             break;
                         }
 
-
+                        //헤더
                         byte[] tempArr = new byte[4];
                         System.arraycopy(buff, 0, tempArr, 0, 4);
                         System.out.println(new String(tempArr, "EUC-KR").trim()); 
@@ -155,6 +155,7 @@ public class SocketServer {
         String saleMembCustNo = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyMMdd")) + authNo;
 
         ScmVirtualAccountResultDto scmVirtualAccountResultDto = ScmVirtualAccountResultDto.builder()
+                .length(800)
                 .svcDiv("SCM")
                 .gramKindCd(1100)
                 .procRstCd(0)
@@ -175,60 +176,90 @@ public class SocketServer {
         try {
 
             // 전체 길이 설정
-            ByteBuffer sendByteBuffer = ByteBuffer.allocate(800);
+            ByteBuffer sendByteBuffer = ByteBuffer.allocate(804);
             // C언어 계설 서버에서 받을 데이터 타입 설정
             sendByteBuffer.order(ByteOrder.BIG_ENDIAN);
 
             //Header 전문 만들기
-            sendByteBuffer.put(scmVirtualAccountResultDto.getSvcDiv().getBytes("UTF-8"));
-            sendByteBuffer.put(new byte[4 - scmVirtualAccountResultDto.getSvcDiv().getBytes("UTF-8").length]);
+            StringBuffer typeFormat1 = new StringBuffer();
+            typeFormat1.append("%0");    // 채워질 형태 : 0
+            typeFormat1.append(4);  // 총자리수
+            typeFormat1.append("d");     // d: 정수타입
+            sendByteBuffer.put(String.format(String.valueOf(typeFormat1), scmVirtualAccountResultDto.getLength()).getBytes("EUC-KR"));
+//            byte[] totLength = byteUtils.intToByteArray(scmVirtualAccountResultDto.getLength());
+//            sendByteBuffer.put(totLength);
+//            sendByteBuffer.put(new byte[4 - totLength.length]);
 
-            byte[] gramKindCd = byteUtils.intToByteArray(scmVirtualAccountResultDto.getGramKindCd());
-            sendByteBuffer.put(gramKindCd);
-            sendByteBuffer.put(new byte[4 - gramKindCd.length]);
+            sendByteBuffer.put(scmVirtualAccountResultDto.getSvcDiv().getBytes("EUC-KR"));
+            sendByteBuffer.put(new byte[4 - scmVirtualAccountResultDto.getSvcDiv().getBytes("EUC-KR").length]);
 
-            byte[] procRstCd = byteUtils.intToByteArray(scmVirtualAccountResultDto.getProcRstCd());
-            sendByteBuffer.put(procRstCd);
-            sendByteBuffer.put(new byte[4 - procRstCd.length]);
+            StringBuffer typeFormat2 = new StringBuffer();
+            typeFormat2.append("%0");    // 채워질 형태 : 0
+            typeFormat2.append(4);  // 총자리수
+            typeFormat2.append("d");     // d: 정수타입
+            sendByteBuffer.put(String.format(String.valueOf(typeFormat2), scmVirtualAccountResultDto.getGramKindCd()).getBytes("EUC-KR"));
+//            byte[] gramKindCd = byteUtils.intToByteArray(scmVirtualAccountResultDto.getGramKindCd());
+//            sendByteBuffer.put(gramKindCd);
+//            sendByteBuffer.put(new byte[4 - gramKindCd.length]);
 
-            sendByteBuffer.put(scmVirtualAccountResultDto.getErrMsg().getBytes("UTF-8"));
-            sendByteBuffer.put(new byte[200 - scmVirtualAccountResultDto.getErrMsg().getBytes("UTF-8").length]);
+            StringBuffer typeFormat3 = new StringBuffer();
+            typeFormat3.append("%0");    // 채워질 형태 : 0
+            typeFormat3.append(4);  // 총자리수
+            typeFormat3.append("d");     // d: 정수타입
+            sendByteBuffer.put(String.format(String.valueOf(typeFormat3), scmVirtualAccountResultDto.getProcRstCd()).getBytes("EUC-KR"));
+//            byte[] procRstCd = byteUtils.intToByteArray(scmVirtualAccountResultDto.getProcRstCd());
+//            sendByteBuffer.put(procRstCd);
+//            sendByteBuffer.put(new byte[4 - procRstCd.length]);
 
-            byte[] gramSeq = byteUtils.intToByteArray(scmVirtualAccountResultDto.getGramSeq());
-            sendByteBuffer.put(gramSeq);
-            sendByteBuffer.put(new byte[10 - gramSeq.length]);
+            sendByteBuffer.put(scmVirtualAccountResultDto.getErrMsg().getBytes("EUC-KR"));
+            sendByteBuffer.put(new byte[200 - scmVirtualAccountResultDto.getErrMsg().getBytes("EUC-KR").length]);
 
-            byte[] gramSendDtm = byteUtils.longToBytes(scmVirtualAccountResultDto.getGramSendDtm());
-            sendByteBuffer.put(gramSendDtm);
-            sendByteBuffer.put(new byte[14 - gramSendDtm.length]);
+            StringBuffer typeFormat4 = new StringBuffer();
+            typeFormat4.append("%0");    // 채워질 형태 : 0
+            typeFormat4.append(10);  // 총자리수
+            typeFormat4.append("d");     // d: 정수타입
+            sendByteBuffer.put(String.format(String.valueOf(typeFormat4), scmVirtualAccountResultDto.getGramSeq()).getBytes("EUC-KR"));
+//            byte[] gramSeq = byteUtils.intToByteArray(scmVirtualAccountResultDto.getGramSeq());
+//            sendByteBuffer.put(gramSeq);
+//            sendByteBuffer.put(new byte[10 - gramSeq.length]);
 
-            sendByteBuffer.put(scmVirtualAccountResultDto.getFiller64().getBytes("UTF-8"));
-            sendByteBuffer.put(new byte[64 - scmVirtualAccountResultDto.getFiller64().getBytes("UTF-8").length]);
+
+            StringBuffer typeFormat5 = new StringBuffer();
+            typeFormat5.append("%0");    // 채워질 형태 : 0
+            typeFormat5.append(14);  // 총자리수
+            typeFormat5.append("d");     // d: 정수타입
+            sendByteBuffer.put(String.format(String.valueOf(typeFormat5), scmVirtualAccountResultDto.getGramSendDtm()).getBytes("EUC-KR"));
+//            byte[] gramSendDtm = byteUtils.longToBytes(scmVirtualAccountResultDto.getGramSendDtm());
+//            sendByteBuffer.put(gramSendDtm);
+//            sendByteBuffer.put(new byte[14 - gramSendDtm.length]);
+
+            sendByteBuffer.put(scmVirtualAccountResultDto.getFiller64().getBytes("EUC-KR"));
+            sendByteBuffer.put(new byte[64 - scmVirtualAccountResultDto.getFiller64().getBytes("EUC-KR").length]);
 
             //Body 전문 만들기
-            sendByteBuffer.put(scmVirtualAccountResultDto.getNormProcYn().getBytes("UTF-8"));
-            sendByteBuffer.put(new byte[1 - scmVirtualAccountResultDto.getNormProcYn().getBytes("UTF-8").length]);
+            sendByteBuffer.put(scmVirtualAccountResultDto.getNormProcYn().getBytes("EUC-KR"));
+            sendByteBuffer.put(new byte[1 - scmVirtualAccountResultDto.getNormProcYn().getBytes("EUC-KR").length]);
 
-            sendByteBuffer.put(scmVirtualAccountResultDto.getProcRsltCntn().getBytes("UTF-8"));
-            sendByteBuffer.put(new byte[200 - scmVirtualAccountResultDto.getProcRsltCntn().getBytes("UTF-8").length]);
+            sendByteBuffer.put(scmVirtualAccountResultDto.getProcRsltCntn().getBytes("EUC-KR"));
+            sendByteBuffer.put(new byte[200 - scmVirtualAccountResultDto.getProcRsltCntn().getBytes("EUC-KR").length]);
 
-            sendByteBuffer.put(scmVirtualAccountResultDto.getMrktCustNo().getBytes("UTF-8"));
-            sendByteBuffer.put(new byte[13 - scmVirtualAccountResultDto.getMrktCustNo().getBytes("UTF-8").length]);
+            sendByteBuffer.put(scmVirtualAccountResultDto.getMrktCustNo().getBytes("EUC-KR"));
+            sendByteBuffer.put(new byte[13 - scmVirtualAccountResultDto.getMrktCustNo().getBytes("EUC-KR").length]);
 
-            sendByteBuffer.put(scmVirtualAccountResultDto.getSaleMembCustNo().getBytes("UTF-8"));
-            sendByteBuffer.put(new byte[13 - scmVirtualAccountResultDto.getSaleMembCustNo().getBytes("UTF-8").length]);
+            sendByteBuffer.put(scmVirtualAccountResultDto.getSaleMembCustNo().getBytes("EUC-KR"));
+            sendByteBuffer.put(new byte[13 - scmVirtualAccountResultDto.getSaleMembCustNo().getBytes("EUC-KR").length]);
 
-            sendByteBuffer.put(scmVirtualAccountResultDto.getIacntBankCd().getBytes("UTF-8"));
-            sendByteBuffer.put(new byte[3 - scmVirtualAccountResultDto.getIacntBankCd().getBytes("UTF-8").length]);
+            sendByteBuffer.put(scmVirtualAccountResultDto.getIacntBankCd().getBytes("EUC-KR"));
+            sendByteBuffer.put(new byte[3 - scmVirtualAccountResultDto.getIacntBankCd().getBytes("EUC-KR").length]);
 
-            sendByteBuffer.put(scmVirtualAccountResultDto.getIacntNo().getBytes("UTF-8"));
-            sendByteBuffer.put(new byte[40 - scmVirtualAccountResultDto.getIacntNo().getBytes("UTF-8").length]);
+            sendByteBuffer.put(scmVirtualAccountResultDto.getIacntNo().getBytes("EUC-KR"));
+            sendByteBuffer.put(new byte[40 - scmVirtualAccountResultDto.getIacntNo().getBytes("EUC-KR").length]);
 
-            sendByteBuffer.put(scmVirtualAccountResultDto.getIacntOwnnm().getBytes("UTF-8"));
-            sendByteBuffer.put(new byte[100 - scmVirtualAccountResultDto.getIacntOwnnm().getBytes("UTF-8").length]);
+            sendByteBuffer.put(scmVirtualAccountResultDto.getIacntOwnnm().getBytes("EUC-KR"));
+            sendByteBuffer.put(new byte[100 - scmVirtualAccountResultDto.getIacntOwnnm().getBytes("EUC-KR").length]);
 
-            sendByteBuffer.put(scmVirtualAccountResultDto.getFiller130().getBytes("UTF-8"));
-            sendByteBuffer.put(new byte[130 - scmVirtualAccountResultDto.getFiller130().getBytes("UTF-8").length]);
+            sendByteBuffer.put(scmVirtualAccountResultDto.getFiller130().getBytes("EUC-KR"));
+            sendByteBuffer.put(new byte[130 - scmVirtualAccountResultDto.getFiller130().getBytes("EUC-KR").length]);
 
             OutputStream os = socket.getOutputStream();
             os.write(sendByteBuffer.array());
