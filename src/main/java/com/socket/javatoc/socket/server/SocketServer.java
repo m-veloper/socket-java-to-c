@@ -44,89 +44,94 @@ public class SocketServer {
                             break;
                         }
 
+
                         byte[] tempArr = new byte[4];
                         System.arraycopy(buff, 0, tempArr, 0, 4);
-                        System.out.println(new String(tempArr).trim());
+                        System.out.println(new String(tempArr, "EUC-KR").trim()); 
 
                         tempArr = new byte[4];
                         System.arraycopy(buff, 4, tempArr, 0, 4);
-                        System.out.println(new String(tempArr).trim());
+                        System.out.println(new String(tempArr, "EUC-KR").trim());  
 
-                        tempArr = new byte[4];
+                        tempArr = new byte[4]; 
                         System.arraycopy(buff, 8, tempArr, 0, 4);
-                        System.out.println(new String(tempArr).trim());
+                        System.out.println(new String(tempArr, "EUC-KR").trim()); 
+
+                        tempArr = new byte[4]; 
+                        System.arraycopy(buff, 12, tempArr, 0, 4);
+                        System.out.println(new String(tempArr, "EUC-KR").trim()); 
 
                         tempArr = new byte[200];
-                        System.arraycopy(buff, 12, tempArr, 0, 200);
-                        System.out.println(new String(tempArr).trim());
+                        System.arraycopy(buff, 16, tempArr, 0, 200);
+                        System.out.println(new String(tempArr, "EUC-KR").trim()); 
 
                         tempArr = new byte[10];
-                        System.arraycopy(buff, 212, tempArr, 0, 10);
-                        System.out.println(new String(tempArr).trim());
+                        System.arraycopy(buff, 216, tempArr, 0, 10);
+                        System.out.println(new String(tempArr, "EUC-KR").trim()); 
 
                         tempArr = new byte[14];
-                        System.arraycopy(buff, 222, tempArr, 0, 14);
-                        System.out.println(new String(tempArr).trim());
+                        System.arraycopy(buff, 226, tempArr, 0, 14);
+                        System.out.println(new String(tempArr, "EUC-KR").trim()); 
 
                         tempArr = new byte[64];
-                        System.arraycopy(buff, 236, tempArr, 0, 64);
-                        System.out.println(new String(tempArr).trim());
+                        System.arraycopy(buff, 240, tempArr, 0, 64);
+                        System.out.println(new String(tempArr, "EUC-KR").trim()); 
 
                         // Body 변환
                         tempArr = new byte[13];
-                        System.arraycopy(buff, 300, tempArr, 0, 13);
-                        System.out.println(new String(tempArr).trim());
+                        System.arraycopy(buff, 304, tempArr, 0, 13);
+                        System.out.println(new String(tempArr, "EUC-KR").trim()); 
                         tempArr = new byte[1];
-                        System.arraycopy(buff, 313, tempArr, 0, 1);
-                        System.out.println(new String(tempArr).trim());
+                        System.arraycopy(buff, 317, tempArr, 0, 1);
+                        System.out.println(new String(tempArr, "EUC-KR").trim()); 
                         tempArr = new byte[1];
-                        System.arraycopy(buff, 314, tempArr, 0, 1);
-                        System.out.println(new String(tempArr).trim());
+                        System.arraycopy(buff, 318, tempArr, 0, 1);
+                        System.out.println(new String(tempArr, "EUC-KR").trim()); 
                         tempArr = new byte[10];
-                        System.arraycopy(buff, 315, tempArr, 0, 10);
-                        System.out.println(new String(tempArr).trim());
+                        System.arraycopy(buff, 319, tempArr, 0, 10);
+                        System.out.println(new String(tempArr, "EUC-KR").trim()); 
                         tempArr = new byte[13];
-                        System.arraycopy(buff, 325, tempArr, 0, 13);
-                        System.out.println(new String(tempArr).trim());
+                        System.arraycopy(buff, 329, tempArr, 0, 13);
+                        System.out.println(new String(tempArr, "EUC-KR").trim()); 
                         tempArr = new byte[100];
-                        System.arraycopy(buff, 338, tempArr, 0, 100);
-                        System.out.println(new String(tempArr).trim());
+                        System.arraycopy(buff, 342, tempArr, 0, 100);
+                        System.out.println(new String(tempArr, "EUC-KR").trim()); 
                         tempArr = new byte[13];
-                        System.arraycopy(buff, 438, tempArr, 0, 13);
-                        System.out.println(new String(tempArr).trim());
+                        System.arraycopy(buff, 442, tempArr, 0, 13);
+                        System.out.println(new String(tempArr, "EUC-KR").trim()); 
                         tempArr = new byte[50];
-                        System.arraycopy(buff, 451, tempArr, 0, 50);
-                        System.out.println(new String(tempArr).trim());
+                        System.arraycopy(buff, 455, tempArr, 0, 50);
+                        System.out.println(new String(tempArr, "EUC-KR").trim()); 
                         tempArr = new byte[50];
-                        System.arraycopy(buff, 501, tempArr, 0, 50);
-                        System.out.println(new String(tempArr).trim());
+                        System.arraycopy(buff, 505, tempArr, 0, 50);
+                        System.out.println(new String(tempArr, "EUC-KR").trim()); 
                         tempArr = new byte[2];
-                        System.arraycopy(buff, 551, tempArr, 0, 2);
-                        System.out.println(new String(tempArr).trim());
-                        tempArr = new byte[4];
-                        System.arraycopy(buff, 553, tempArr, 0, 4);
-                        System.out.println(new String(tempArr).trim());
+                        System.arraycopy(buff, 555, tempArr, 0, 2);
+                        System.out.println(new String(tempArr, "EUC-KR").trim()); 
                         tempArr = new byte[4];
                         System.arraycopy(buff, 557, tempArr, 0, 4);
-                        System.out.println(new String(tempArr).trim());
+                        System.out.println(new String(tempArr, "EUC-KR").trim()); 
                         tempArr = new byte[4];
                         System.arraycopy(buff, 561, tempArr, 0, 4);
-                        System.out.println(new String(tempArr).trim());
+                        System.out.println(new String(tempArr, "EUC-KR").trim()); 
+                        tempArr = new byte[4];
+                        System.arraycopy(buff, 565, tempArr, 0, 4);
+                        System.out.println(new String(tempArr, "EUC-KR").trim()); 
                         tempArr = new byte[50];
-                        System.arraycopy(buff, 565, tempArr, 0, 50);
-                        System.out.println(new String(tempArr).trim());
+                        System.arraycopy(buff, 569, tempArr, 0, 50);
+                        System.out.println(new String(tempArr, "EUC-KR").trim()); 
                         tempArr = new byte[3];
-                        System.arraycopy(buff, 615, tempArr, 0, 3);
-                        System.out.println(new String(tempArr).trim());
+                        System.arraycopy(buff, 619, tempArr, 0, 3);
+                        System.out.println(new String(tempArr, "EUC-KR").trim()); 
                         tempArr = new byte[40];
-                        System.arraycopy(buff, 618, tempArr, 0, 40);
-                        System.out.println(new String(tempArr).trim());
+                        System.arraycopy(buff, 622, tempArr, 0, 40);
+                        System.out.println(new String(tempArr, "EUC-KR").trim()); 
                         tempArr = new byte[100];
-                        System.arraycopy(buff, 658, tempArr, 0, 100);
-                        System.out.println(new String(tempArr).trim());
+                        System.arraycopy(buff, 662, tempArr, 0, 100);
+                        System.out.println(new String(tempArr, "EUC-KR").trim()); 
                         tempArr = new byte[142];
-                        System.arraycopy(buff, 758, tempArr, 0, 142);
-                        System.out.println(new String(tempArr).trim());
+                        System.arraycopy(buff, 762, tempArr, 0, 142);
+                        System.out.println(new String(tempArr, "EUC-KR").trim()); 
 
 
                         sendData(buff, socket);

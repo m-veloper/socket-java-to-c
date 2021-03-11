@@ -11,6 +11,7 @@ import lombok.Setter;
 public class ScmVirtualAccountResultDto {
 
     // 헤더
+    private int length;             // 전문종별코드
     private String svcDiv;          // 서비스구분
     private int gramKindCd;         // 전문종별코드
     private int procRstCd;          // 응답코드
