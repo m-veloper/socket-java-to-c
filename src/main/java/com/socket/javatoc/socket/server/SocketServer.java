@@ -134,7 +134,7 @@ public class SocketServer {
                         System.out.println(new String(tempArr, "EUC-KR").trim()); 
 
 
-                        sendData(buff, socket);
+//                        sendData(buff, socket);
                     }
 
 
@@ -147,7 +147,10 @@ public class SocketServer {
         }
     }
 
-    public void sendData(byte[] bytes, Socket socket){
+    public void sendData(byte[] bytes, Socket socket) throws InterruptedException {
+
+//        Thread.sleep(10000);
+
         ByteUtils byteUtils = new ByteUtils();
 
         // 인증번호 생성
@@ -177,6 +180,7 @@ public class SocketServer {
 
             // 전체 길이 설정
             ByteBuffer sendByteBuffer = ByteBuffer.allocate(804);
+
             // C언어 계설 서버에서 받을 데이터 타입 설정
             sendByteBuffer.order(ByteOrder.BIG_ENDIAN);
 
