@@ -133,7 +133,7 @@ public class SocketClinet2 {
             sendByteBuffer.put(scmVirtualAccountResultDto.getFiller130().getBytes("EUC-KR"));
             sendByteBuffer.put(new byte[130 - scmVirtualAccountResultDto.getFiller130().getBytes("EUC-KR").length]);
 
-            SocketAddress address = new InetSocketAddress("127.0.0.1", 8090);
+            SocketAddress address = new InetSocketAddress("10.20.10.237", 8090);
             socket.connect(address);
             log.info("가상계좌 요청 우리카드 서버 연결됨 : {}", address);
             OutputStream os = socket.getOutputStream();
