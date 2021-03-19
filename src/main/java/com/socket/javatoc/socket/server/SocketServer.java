@@ -131,7 +131,7 @@ public class SocketServer {
                         System.out.println(new String(tempArr, "EUC-KR").trim()); 
                         tempArr = new byte[142];
                         System.arraycopy(buff, 762, tempArr, 0, 142);
-                        System.out.println(new String(tempArr, "EUC-KR").trim()); 
+                        System.out.println(new String(tempArr, "EUC-KR").trim());
 
 
                         sendData(buff, socket);
@@ -265,7 +265,6 @@ public class SocketServer {
             sendByteBuffer.put(scmVirtualAccountResultDto.getFiller130().getBytes("EUC-KR"));
             sendByteBuffer.put(new byte[130 - scmVirtualAccountResultDto.getFiller130().getBytes("EUC-KR").length]);
 
-            socket.close();
             OutputStream os = socket.getOutputStream();
             os.write(sendByteBuffer.array());
             os.flush();
