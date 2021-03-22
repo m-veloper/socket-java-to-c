@@ -19,7 +19,7 @@ public class SocketClinet2 {
 
         try {
 
-            log.info("====== 가상계좌 요청 소켓 실행 ======");
+            log.info("====== 가상계좌 응답 소켓 실행 ======");
 
             // 소켓 세팅
             Socket socket = new Socket();
@@ -33,9 +33,17 @@ public class SocketClinet2 {
                     .gramKindCd(1100)
                     .procRstCd(0)
                     .errMsg("")
-                    .gramSeq(2102230155)
+                    .gramSeq(2103220078)
                     .gramSendDtm(20140301130000L)
                     .filler64("")
+//                    .normProcYn("N")
+//                    .procRsltCntn("정보부족")
+//                    .mrktCustNo("")
+//                    .saleMembCustNo("")
+//                    .iacntBankCd("")
+//                    .iacntNo("")
+//                    .iacntOwnnm("")
+//                    .filler130("")
                     .normProcYn("Y")
                     .procRsltCntn("정상처리")
                     .mrktCustNo("WCWP")
@@ -133,14 +141,12 @@ public class SocketClinet2 {
             sendByteBuffer.put(scmVirtualAccountResultDto.getFiller130().getBytes("EUC-KR"));
             sendByteBuffer.put(new byte[130 - scmVirtualAccountResultDto.getFiller130().getBytes("EUC-KR").length]);
 
-//            SocketAddress address = new InetSocketAddress("10.20.10.237", 8090); // 로컬
-            SocketAddress address = new InetSocketAddress("115.71.35.37", 8090); // 개발
+            SocketAddress address = new InetSocketAddress("10.20.10.237", 8090); // 로컬
+//            SocketAddress address = new InetSocketAddress("115.71.35.37", 8090); // 개발
             socket.connect(address);
-            log.info("가상계좌 요청 우리카드 서버 연결됨 : {}", address);
+            log.info("가상계좌 응답 우리카드 서버 연결됨 : {}", address);
             OutputStream os = socket.getOutputStream();
-//            ByteBuffer makeError = ByteBuffer.allocate(-1);
             os.write(sendByteBuffer.array());
-//            os.write(makeError.array());
             os.flush();
             os.close();
 
