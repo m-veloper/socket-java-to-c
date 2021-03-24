@@ -33,29 +33,32 @@ public class SocketClinet2 {
                     .gramKindCd(1100)
                     .procRstCd(0)
                     .errMsg("")
-                    .gramSeq(2103220078)
+                    .gramSeq(2103240000)
                     .gramSendDtm(20140301130000L)
                     .filler64("")
-//                    .normProcYn("N")
-//                    .procRsltCntn("정보부족")
-//                    .mrktCustNo("")
-//                    .saleMembCustNo("")
-//                    .iacntBankCd("")
-//                    .iacntNo("")
-//                    .iacntOwnnm("")
-//                    .filler130("")
-                    .normProcYn("Y")
-                    .procRsltCntn("정상처리")
-                    .mrktCustNo("WCWP")
-                    .saleMembCustNo(saleMembCustNo)
-                    .iacntBankCd("020")
-                    .iacntNo("62000004118233")
-                    .iacntOwnnm("김대표(주)우리카드")
+
+                    .normProcYn("N")
+                    .procRsltCntn("정보부족")
+                    .mrktCustNo("")
+                    .saleMembCustNo("")
+                    .iacntBankCd("")
+                    .iacntNo("")
+                    .iacntOwnnm("")
                     .filler130("")
+
+//                    .normProcYn("Y")
+//                    .procRsltCntn("정상처리")
+//                    .mrktCustNo("WCWP")
+//                    .saleMembCustNo(saleMembCustNo)
+//                    .iacntBankCd("020")
+//                    .iacntNo("62000004118233")
+//                    .iacntOwnnm("김대표(주)우리카드")
+//                    .filler130("")
+
                     .build();
 
             // 전체 길이 설정
-            ByteBuffer sendByteBuffer = ByteBuffer.allocate(804);
+            ByteBuffer sendByteBuffer = ByteBuffer.allocate(10000);
 
             // C언어 계설 서버에서 받을 데이터 타입 설정
             sendByteBuffer.order(ByteOrder.BIG_ENDIAN);
@@ -141,7 +144,7 @@ public class SocketClinet2 {
             sendByteBuffer.put(scmVirtualAccountResultDto.getFiller130().getBytes("EUC-KR"));
             sendByteBuffer.put(new byte[130 - scmVirtualAccountResultDto.getFiller130().getBytes("EUC-KR").length]);
 
-            SocketAddress address = new InetSocketAddress("10.20.10.237", 8090); // 로컬
+            SocketAddress address = new InetSocketAddress("127.0.0.1", 8090); // 로컬
 //            SocketAddress address = new InetSocketAddress("115.71.35.37", 8090); // 개발
             socket.connect(address);
             log.info("가상계좌 응답 우리카드 서버 연결됨 : {}", address);
