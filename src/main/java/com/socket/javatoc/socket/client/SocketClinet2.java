@@ -37,28 +37,28 @@ public class SocketClinet2 {
                     .gramSendDtm(20140301130000L)
                     .filler64("")
 
-                    .normProcYn("N")
-                    .procRsltCntn("정보부족")
-                    .mrktCustNo("")
-                    .saleMembCustNo("")
-                    .iacntBankCd("")
-                    .iacntNo("")
-                    .iacntOwnnm("")
-                    .filler130("")
-
-//                    .normProcYn("Y")
-//                    .procRsltCntn("정상처리")
-//                    .mrktCustNo("WCWP")
-//                    .saleMembCustNo(saleMembCustNo)
-//                    .iacntBankCd("020")
-//                    .iacntNo("62000004118233")
-//                    .iacntOwnnm("김대표(주)우리카드")
+//                    .normProcYn("N")
+//                    .procRsltCntn("정보부족")
+//                    .mrktCustNo("")
+//                    .saleMembCustNo("")
+//                    .iacntBankCd("")
+//                    .iacntNo("")
+//                    .iacntOwnnm("")
 //                    .filler130("")
+
+                    .normProcYn("Y")
+                    .procRsltCntn("정상처리")
+                    .mrktCustNo("WCWP")
+                    .saleMembCustNo(saleMembCustNo)
+                    .iacntBankCd("020")
+                    .iacntNo("62000004118233")
+                    .iacntOwnnm("김대표(주)우리카드")
+                    .filler130("")
 
                     .build();
 
             // 전체 길이 설정
-            ByteBuffer sendByteBuffer = ByteBuffer.allocate(10000);
+            ByteBuffer sendByteBuffer = ByteBuffer.allocate(804);
 
             // C언어 계설 서버에서 받을 데이터 타입 설정
             sendByteBuffer.order(ByteOrder.BIG_ENDIAN);
