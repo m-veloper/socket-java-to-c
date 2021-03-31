@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 @Slf4j
-public class SocketClinet2 {
+public class VirtualAccountClient {
     public static void main(String[] args) {
 
         try {
@@ -33,7 +33,7 @@ public class SocketClinet2 {
                     .gramKindCd(1100)
                     .procRstCd(0)
                     .errMsg("")
-                    .gramSeq(2103240000)
+                    .gramSeq(2103260002)
                     .gramSendDtm(20140301130000L)
                     .filler64("")
 
@@ -45,14 +45,13 @@ public class SocketClinet2 {
 //                    .iacntNo("")
 //                    .iacntOwnnm("")
 //                    .filler130("")
-
                     .normProcYn("Y")
                     .procRsltCntn("정상처리")
                     .mrktCustNo("WCWP")
                     .saleMembCustNo(saleMembCustNo)
                     .iacntBankCd("020")
                     .iacntNo("62000004118233")
-                    .iacntOwnnm("김대표(주)우리카드")
+                    .iacntOwnnm("에스엠（SM）건설(주)우리카드")
                     .filler130("")
 
                     .build();
