@@ -33,7 +33,7 @@ public class VirtualAccountClient {
                     .gramKindCd(1100)
                     .procRstCd(0)
                     .errMsg("")
-                    .gramSeq(2103260002)
+                    .gramSeq(2104010061)
                     .gramSendDtm(20140301130000L)
                     .filler64("")
 
