@@ -33,15 +33,15 @@ public class FitnessClient {
                     .gramKindCd(2100)
                     .procRstCd(0)
                     .errMsg("")
-                    .gramSeq(2104020069)
+                    .gramSeq(2104060140)
                     .gramSendDtm(20140301130000L)
                     .filler64("")
 
                     .normProcYn("Y")
-                    .procRsltCntn("정상처리")
-                    .bizNo("8458101186")
+                    .procRsltCntn("")
+                    .bizNo("")
                     .fitLnmRstCd("1")
-                    .fitLnmMngNo("11234567890")
+                    .fitLnmMngNo("21031700001")
                     .filler177("")
                     .build();
 
